@@ -24,16 +24,16 @@
 #define NET_DEVICE_STATE(x) (NET_DEVICE_IS_UP(x) ? "UP" : "DOWN")
 
 struct net_device {
-    struct net_device *next;
-    unsigned int index;
-    char name[IFNAMSIZ];
-    uint16_t type;
-    uint16_t mtu;
-    uint16_t flags;
-    uint16_t hlen;
-    uint16_t alen;
-    uint8_t addr[NET_DEVICE_ADDR_LEN];
-    uint8_t broadcast[NET_DEVICE_ADDR_LEN];
+    struct net_device *next;    // next device in the list. null if last
+    unsigned int index;     // device index
+    char name[IFNAMSIZ];    // device name. generated automatically
+    uint16_t type;       // device type. see NET_DEVICE_TYPE_*
+    uint16_t mtu;     // maximum transmission unit
+    uint16_t flags;   // device flags. see NET_DEVICE_FLAG_*
+    uint16_t hlen;      // header length. 0 if not applicable
+    uint16_t alen;    // address length. 0 if not applicable
+    uint8_t addr[NET_DEVICE_ADDR_LEN];  // hardware address
+    uint8_t broadcast[NET_DEVICE_ADDR_LEN];     // broadcast address.
 };
 
 extern struct net_device *
