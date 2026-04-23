@@ -37,6 +37,7 @@
 
 struct net_device {
     struct net_device *next;    // next device in the list. null if last
+    struct net_iface *ifaces;   // list of interfaces. null if no interface
     unsigned int index;     // device index
     char name[IFNAMSIZ];    // device name. generated automatically
     uint16_t type;       // device type. see NET_DEVICE_TYPE_*
